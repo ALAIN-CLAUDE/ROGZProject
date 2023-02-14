@@ -1,0 +1,128 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 01-25-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+
+	<section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_large"
+		aria-labelledby="modal-heading-01" aria-modal="true">
+		<div class="slds-modal__container">
+			<lightning-button-icon icon-name="utility:close" class="slds-modal__close" size="large"
+				alternative-text="Settings" variant="bare-inverse" disabled={disableCancel} onclick={closeProducts}>
+			</lightning-button-icon>
+			<div class="slds-modal__header">
+				<h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">
+					<template if:true={isAdd}> Select to Add Products
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a
+							onclick={openCS} target="_blank" class="slds-badge">ROGZ Product Architecture Cheat
+							Sheet</a></template>
+					<template if:true={isEdit}> Edit All Order Products </template>
+				</h1>
+				<!-- <p if:true={isAdd}>Price Book: Standard Price Book</p> -->
+			</div>
+			<div class="slds-modal__content slds-p-vertical_x-small slds-p-horizontal_medium" id="modal-content-id-1">
+				<template if:true={isAdd}>
+					<lightning-layout class="slds-p-bottom_small">
+						<lightning-layout-item class="slds-p-right_small">
+							<lightning-input name="product2Brand" label="Brand" class="reset" type="search" onchange={handleChange}>
+							</lightning-input>
+						</lightning-layout-item>
+						<lightning-layout-item class="slds-p-right_small">
+							<lightning-input name="product2Divison" label="Division" class="reset"  type="search"
+								onchange={handleChange}></lightning-input>
+						</lightning-layout-item>
+						<lightning-layout-item class="slds-p-right_small">
+							<lightning-input name="product2Category" label="Category" class="reset"  type="search"
+								onchange={handleChange}></lightning-input>
+						</lightning-layout-item>
+						<lightning-layout-item class="slds-p-right_small">
+							<lightning-input name="product2Range" label="Range" class="reset"  type="search" onchange={handleChange}>
+							</lightning-input>
+						</lightning-layout-item>
+						<lightning-layout-item class="slds-p-right_small">
+							<lightning-input name="product2Function" label="Function"  class="reset" type="search"
+								onchange={handleChange}></lightning-input>
+						</lightning-layout-item>
+						<lightning-layout-item class="slds-p-right_small">
+							<lightning-input name="Name" label="Product" class="reset"  type="search" onchange={handleChange}>
+							</lightning-input>
+						</lightning-layout-item>
+						<lightning-layout-item class="slds-p-right_small">
+							<lightning-input name="product2StockKeepingUnit" label="Product SKU"  type="search"
+								onchange={handleChange}></lightning-input>
+						</lightning-layout-item>
+					</lightning-layout>
+					<div class="table-block">
+
+				
+
+
+                        <c-custom-datatable data-id="datatable" key-field="priceBookEntryId" data={productData} columns={columns}
+							onsave={handleSave} onrowselection={handleSelection} show-row-number-column="false"
+							suppress-bottom-bar selected-rows={selectedRows} enable-infinite-loading
+							onloadmore={loadMoreData} >
+						</c-custom-datatable>
+					<!--	<lightning-datatable
+                key-field="Id"
+                data={productData}
+                columns={columns}
+                onsave={handleSave}
+                onrowselection={handleSelection}
+                show-row-number-column="false"
+                suppress-bottom-bar
+                hide-checkbox-column={isEdit}
+                >
+            </lightning-datatable>-->
+					</div>
+					<p class="slds-p-top_small">Total :
+						{totalNoOfProducts}<span if:true={loadMoreStatus}>, {loadMoreStatus}</span></p>
+				</template>
+
+      <template if:true={isEdit}>
+        <div>
+          <c-custom-datatable
+            key-field="orderItemId"
+            data={productData}
+            columns={columns}
+            onclick={handleClick}
+            onsave={handleSave}
+            onrowselection={preSelectedRows}
+            draft-values={draftValues}
+              selected-rows={selectedProductIds}
+            oncellchange={handleKeyUp}
+            show-row-number-column="false"
+            suppress-bottom-bar
+            hide-checkbox-column>
+          </c-custom-datatable>
+        </div>
+      </template>
+
+
+			</div>
+
+			<div class="slds-modal__footer">
+				<button
+          class="slds-button slds-button_neutral"
+          aria-label="Cancel and close"
+          disabled={disableCancel}
+          onclick={closeProducts}
+        >
+          Cancel
+        </button>
+				<button
+        class="slds-button slds-button_brand"
+        disabled={disableSave}
+        onclick={handleSave}
+        >
+            Save
+        </button>
+			</div>
+
+
+		</div>
+	</section>
+	<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+</template>

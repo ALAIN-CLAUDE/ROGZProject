@@ -1,0 +1,97 @@
+<!-- sldsValidatorIgnore -->
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 01-19-2023
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+-->
+<template>
+
+     <!--this is New button section ends here-->
+
+     <template if:true={isModalOpen}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open slds-modal_small" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1">
+         <div class="slds-modal__container">
+           <header class="slds-modal__header">
+             <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+
+               <lightning-icon icon-name="utility:close"
+               alternative-text="close"
+               variant="inverse"
+               size="small" ></lightning-icon>
+               <span class="slds-assistive-text">Close</span>
+             </button>
+           <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">New Order Draft</h2>
+           </header>
+           <div class="slds-modal__content slds-p-around_small" id="modal-content-id-1">
+             <lightning-card>
+             <template if:true={loaded}>
+               <lightning-spinner alternative-text="Loading" variant="brand"></lightning-spinner>
+           </template>
+
+           <h3   class="test-id__section-header-container padder slds-section__title slds-theme--shade">
+             <span  class="test-id__section-header-title section-header-title slds-p-horizontal--small slds-truncate">Request</span>
+             </h3>
+
+         <!-- <div class="slds-var-p-around_small">  -->
+         /////////////////////
+
+         <div class="slds-form" role="list">
+            <div class="slds-form__row">
+            <div class="slds-form__item" role="listitem">
+            <div class="slds-form-element slds-form-element_horizontal slds-is-editing">
+            <label class="slds-form-element__label" for="single-form-element-id-02">Label</label>
+            <div class="slds-form-element__control">
+            <input type="text" id="single-form-element-id-02" placeholder="Placeholder text…" class="slds-input" />
+            </div>
+            </div>
+            </div>
+            <div class="slds-form__item" role="listitem">
+            <div class="slds-form-element slds-form-element_horizontal slds-is-editing">
+            <label class="slds-form-element__label" for="single-form-element-id-03">Label</label>
+            <div class="slds-form-element__control">
+            <input type="text" id="single-form-element-id-03" placeholder="Placeholder text…" class="slds-input" />
+            </div>
+            </div>
+            </div>
+            </div>
+            <div class="slds-form__row">
+            <div class="slds-form__item" role="listitem">
+            <div class="slds-form-element slds-form-element_horizontal slds-is-editing slds-form-element_1-col">
+            <label class="slds-form-element__label" for="single-form-element-id-04">Description</label>
+            <div class="slds-form-element__control">
+            <textarea id="single-form-element-id-04" placeholder="Placeholder text…" class="slds-textarea">Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Etiam porta sem malesuada magna mollis euismod.</textarea>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+           </lightning-card>
+           </div>
+
+           <footer class="slds-modal__footer">
+           <div class="slds-align_absolute-center slds-border_leftslds-border_left" style="height: 2.5rem">
+             <div class="slds-clearfix slds-border_leftslds-border_left" style="margin-right:5px">
+             <div class="slds-float_left">
+               <lightning-button  variant="neutral" label="Cancel" title="Cancel" onclick={closeModal}>Cancel</lightning-button>
+             </div>
+         </div>
+         <div class="slds-clearfix slds-border_leftslds-border_left" >
+             <div class="slds-align_absolute-center">
+               <lightning-button label="Save &amp; New" variant="neutral" type="submit" onclick={handleSaveAndNew}> </lightning-button>
+             </div>
+         </div>
+         <div class="slds-clearfix slds-border_leftslds-border_left" style="margin-left:5px">
+             <div class="slds-float_right">
+               <lightning-button label="Save" variant="brand" type="submit" onclick={handleSave}></lightning-button>
+             </div>
+         </div>
+       </div>
+           </footer>
+         </div>
+       </section>
+       <div class="slds-backdrop slds-backdrop_open"></div>
+     </template>
+
+</template>

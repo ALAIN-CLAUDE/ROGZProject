@@ -1,0 +1,6 @@
+.slds-modal__content{
+    min-height: 60vh;
+}
+.table-block{
+    height: calc(60vh - 115px);
+}

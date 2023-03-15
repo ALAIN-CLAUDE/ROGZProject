@@ -1,7 +1,7 @@
 import { LightningElement, wire, api, track } from 'lwc';
 import { NavigationMixin, CurrentPageReference } from "lightning/navigation";
 import getProductsCount from "@salesforce/apex/AddOrEditOrderProductsController.getProductsCount";
-import getAllProducts from "@salesforce/apex/AddOrEditOrderProductsController.getAllProducts";
+import getAllProducts from "@salesforce/apex/.getAllProducts";
 import getOrderProducts from "@salesforce/apex/AddOrEditOrderProductsController.getOrderProducts";
 import addProductsToOrder from "@salesforce/apex/AddOrEditOrderProductsController.addProductsToOrder";
 import ROGZProductArchitectureSheet from '@salesforce/resourceUrl/ROGZProductArchitectureSheet';
@@ -21,7 +21,7 @@ const addcolumns =
 const editcolumns =
     [
         { label: 'Product Image', fieldName: 'productImage', type: 'imageDisplay' },
-        { label: 'Quantity', fieldName: 'quantity', type: 'number', editable: 'true' },
+        { label: 'Quantity', fieldName: 'quantity', type: 'numAddOrEditOrderProductsControllerber', editable: 'true' },
         { label: 'Available Quantity', fieldName: 'availableQuantity', type: 'double' },
         { label: 'Product Description', fieldName: 'name', type: 'text', typeAttributes: {} },
         { label: 'Product SKU', fieldName: 'product2StockKeepingUnit', type: 'text' },
